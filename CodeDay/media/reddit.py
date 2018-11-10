@@ -15,11 +15,11 @@ def init():
     )
 
 # Get the posts from a subreddit
-def getPosts(subreddit, limit=20, source='hot'):
+def getPosts(subredditName, limit=20, source='hot'):
     if instance is None:
         raise Exception("Reddit instance not initilized! call init()")
 
-    subredditItem = instance.subreddit(subreddit)
+    subredditItem = instance.subreddit(subredditName)
     
     data = None
     returnData = []
