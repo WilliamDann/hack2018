@@ -1,0 +1,12 @@
+button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%);
+    border:none;
+    border-radius: 3px;
+    color: black;
+    padding: 20px;
+    font-size: 30px;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.65);
+}

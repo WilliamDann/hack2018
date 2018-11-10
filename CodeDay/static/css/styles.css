@@ -1,0 +1,31 @@
+button {
+    margin: auto;
+    display: block;
+    top: 50%;
+    position: relative;
+    transform: translateY(100px);
+    border: none;
+    border-radius: 3px;
+    color: white;
+    background-color: #1e3799;
+    padding: 10px 20px 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.65);
+    transition: all 0.5s;
+}
+
+button:hover {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.85), 0 0 0 100px rgba(0, 0, 0, 0.02);
+    transform: translateY(97px);
+}
+
+button:focus {
+    outline: none;
+}
+
+button.focused {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.85), 0 0 0 100px rgba(0, 0, 0, 0), 0 0 0 1000px rgba(0, 0, 0, 0.2);
+}
+
+.wrapper {}
