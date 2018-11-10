@@ -34,5 +34,3 @@ def getPosts(subredditName, limit=20, source='hot'):
         returnData.append(media.MediaObject(post.title, post.media, post.shortlink))
     
     return returnData
-
-init()
