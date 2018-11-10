@@ -6,3 +6,4 @@
 
 - Design UI
 - Make requests to backend
+- options/settings page/menu?
