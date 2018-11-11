@@ -34,8 +34,8 @@ button.addEventListener('click', () => {
             content.quote.innerHTML = json.quote.text;
             content.click.quote.href = json.quote.reddit_url;
 
-            if (json.image.image.includes('imgur.com')) {
-                content.embed.src = json.image.image;
+            if (json.image.image.includes('imgur.com') && !json.image.image.includes('i.imgur.com')) {
+                content.embed.src = json.image.image + "/enbed";
                 content.embed.style.display = 'block';
                 content.image.style.display = 'none';
             } else {
