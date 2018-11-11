@@ -1,8 +1,10 @@
 from RedditObject import RedditObject as ro
 from news import NewsParser
 from random import randint
+import re
 
 increaseRate = 10
+newsSites = ["cnn.com", "bbc.com", "msnbc.com", "nytimes.com", "wsj.com", "foxnews.com", "huffingtonpost.com", "washingtonpost.com", "latimes.com", "reuters.com", "abcnews.go.com", "usatoday.com", "bloomberg.com", "nbcnews.com", "dailymail.co.uk", "theguardian.com", "timesofindia.indiatimes.com", "news.com.au", "yahoo.com", "news.google.com"]
 
 class MediaSet:
     def __init__(self, quote, quoteurl, imageurl, imagetitle, imageposturl, newsurl, newstitle, newsdesc, newsimg, newslink):
@@ -64,14 +66,22 @@ def agregate(subredditimg, subredditquote, subredditnews):
     
     randI, randQ, randN = (randint(0, len(imgpost) - 1),randint(0, len(quotepost) - 1),randint(0, len(newsPost) - 1))
 
+
     newsDesc, newsImage, newsTitle = None, None, None
     if len(newsPost) > 0:
         newsDesc, newsImage, newsTitle = NewsParser.parseArticle(newsPost[randN].content)
 
-    if newsTitle == '':
+
+    if newsTitle == '' or not newsDesc == newsPost[randN].title:
         newsTitle = newsPost[randN].title
 
-    return MediaSet(quotepost[randQ].title, quotepost[randQ].link,
+    quote = ''
+    if len(quotepost[randQ].content) > len(quotepost[randQ].title):
+        quote = quotepost[randQ].content
+    else:
+        quote = re.sub(r'\[text\]', '', quotepost[randQ].title, flags=re.IGNORECASE)
+
+    return MediaSet(quote, quotepost[randQ].link,
                     imgpost[randI].image, imgpost[randI].title,  imgpost[randI].link,
                     newsPost[randN].content, newsTitle, newsDesc, newsImage, newsPost[randN].link)
 
