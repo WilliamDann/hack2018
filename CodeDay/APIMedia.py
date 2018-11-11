@@ -21,7 +21,7 @@ class MediaSet:
 
 def agregate(subredditimg, subredditquote, subredditnews):
     count = 10
-    imgpost = ro.getImagePost(subredditimg,count)#TODO forloop to check for images in here
+    imgpost = ro.getImagePost(subredditimg,count)
     while(len(imgpost) == 0):
         print("ImgPostCount |", count)
         count+=increaseRate
@@ -43,6 +43,6 @@ def agregate(subredditimg, subredditquote, subredditnews):
         newsPost = ro.getLinkPost(subredditnews, count)
 
     return MediaSet(quotepost[0].title, 
-                    imgpost[0].image, imgpost[0].link, 
+                    imgpost[0].image, imgpost[0].title, 
                     newsPost[0].content, newsPost[0].title)
 
