@@ -32,7 +32,7 @@ body {
     transform: translateY(-5px);
 }
 
-#main-button:hover:focus {
+#main-button.focused {
     animation: button .5s;
     outline: none;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.85), 0 0 0 100px rgba(0, 0, 0, 0), 0 0 0 1000px rgba(0, 0, 0, 0.2);
@@ -53,9 +53,4 @@ body {
 #imagecard {
     margin: 0.5rem auto 1rem auto;
     width: 50%;
-}
-
-.card-title {
-    background-color: rgba(0, 0, 0, 0.2);
-    border-top-right-radius: 20px;
 }
