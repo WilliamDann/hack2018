@@ -3,6 +3,16 @@ import reddit
 
 reddit.init()
 
+listOfImgHosts = ['imgur', 'gfycat', 'gyazo', 'i.redd.it']
+
+# Determine if a link is an image
+def isImage(post):
+    for host in listOfImgHosts:
+        if host in post.url:
+            return True
+    
+    return False
+
 # Class for data from reddit
 class RedditObject(MediaObject):
     def __init__(self, title, image, link, content=""):
@@ -22,13 +32,13 @@ class RedditObject(MediaObject):
 
     # Get image posts from reddit 
     def getImagePost(subredditName, limit=1, source='hot'):
-        posts = reddit.getPosts(subredditName, limit,)
+        posts = reddit.getPosts(subredditName, limit, source)
 
         returnData = []
         
         for post in posts:
-            if post.media and RedditObject.filterPost(post):
-                returnData.append(MediaObject(post.title, post.media, post.shortlink))
+            if isImage(post) and RedditObject.filterPost(post):
+                returnData.append(MediaObject(post.title, post.media, post.shortlink, post.url))
         
         return returnData
     
@@ -39,7 +49,7 @@ class RedditObject(MediaObject):
         returnData = []
         
         for post in posts:
-            if not post.media and RedditObject.filterPost(post):
+            if post.is_self and RedditObject.filterPost(post):
                 returnData.append(MediaObject(post.title, post.media, post.shortlink, post.selftext))
         
         return returnData
@@ -51,7 +61,7 @@ class RedditObject(MediaObject):
         returnData = []
         
         for post in posts:
-            if post.url and RedditObject.filterPost(post):
+            if (not isImage(post) and not post.is_self) and RedditObject.filterPost(post):
                 returnData.append(MediaObject(post.title, post.media, post.shortlink, post.url))
         
         return returnData
