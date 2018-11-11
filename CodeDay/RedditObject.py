@@ -38,7 +38,7 @@ class RedditObject(MediaObject):
         
         for post in posts:
             if isImage(post) and RedditObject.filterPost(post):
-                returnData.append(MediaObject(post.title, post.media, post.shortlink, post.url))
+                returnData.append(MediaObject(post.title, post.url, post.shortlink, None))
         
         return returnData
     
