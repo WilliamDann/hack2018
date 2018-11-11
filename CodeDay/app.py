@@ -2,6 +2,7 @@ import media
 from flask import Flask, render_template, jsonify
 import APIMedia as apMedia
 import random
+from APIMedia import MediaSet
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -28,9 +29,12 @@ def getPosts():
     subredditsForQuotes = ['inspirationalquotes', 'happy', 'GetMotivated']
     subredditsForNews = ['UpliftingNews', 'upliftingtrends','happy']
 
-    return jsonify(apMedia.agregate(subredditsForImages[random.int(0, len(subredditsForImages) - 1)],
+    agregatedData = apMedia.agregate(subredditsForImages[random.int(0, len(subredditsForImages) - 1)],
                                     subredditsForNews[random.int(0, len(subredditsForNews) - 1)],
-                                    subredditsForQuotes[random.int(0, len(subredditsForQuotes) - 1)]))#TODO Subreddit Selector
+                                    subredditsForQuotes[random.int(0, len(subredditsForQuotes) - 1)])
+
+    return jsonify(agregatedData.getJSONFormatted())#TODO Subreddit Selector
+
 
 
 
