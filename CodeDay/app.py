@@ -3,8 +3,16 @@ from flask import Flask, render_template, jsonify
 import APIMedia as apMedia
 from random import randint
 from APIMedia import MediaSet
+import reddit
+
+from ZODB import FileStorage, DB
+
 
 app = Flask(__name__, static_url_path='/static')
+storage = FileStorage.FileStorage('ourDatabase.fs')
+db = DB(storage)
+connection = db.open()
+root = connection.root()
 
 @app.route('/')
 def index():
@@ -35,6 +43,16 @@ def getPosts():
                                      subredditsForNews[randint(0, len(subredditsForNews) - 1)])
 
     return jsonify(agregatedData.getJSONFormatted())#TODO Subreddit Selector
+
+
+def populateDB(listofimages, listofquotes, listofnews):
+    joinedList = listofimages + listofquotes + listofnews
+    for element in joinedList:
+        #reddit = reddit.getPosts(element)
+        root[element] = {mediaObj: reddit.getPosts(element)}
+
+
+
 
 
 
