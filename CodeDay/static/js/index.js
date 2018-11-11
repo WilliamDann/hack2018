@@ -1,5 +1,6 @@
-const button = document.getElementById('button');
+const button = document.getElementById('main-button');
 
-button.addEventListener('focus', () => {
-    button.classList.add('focused');
-})
+function myMove() {
+    button.style.top = '600px';
+    button.innerHTML = 'Make More Happy';
+}

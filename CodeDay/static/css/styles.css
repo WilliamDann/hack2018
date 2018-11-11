@@ -43,6 +43,7 @@ button.focused {
     transition: all 0.5s;
     margin-top: 10%;
     position: absolute;
+    top:0;
 }
 
 #main-button:hover {

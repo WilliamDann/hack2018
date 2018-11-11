@@ -18,24 +18,6 @@
 
     <script src="static/js/index.js"></script>
 
-
-
 </body>
-
-<script>
-        function myMove() {
-          var elem = document.getElementById("main-button");   
-          var pos = 0;
-          var id = setInterval(frame, 20);
-          function frame() {
-            if (pos == 600) {
-              clearInterval(id);
-            } else {
-              pos++; 
-              elem.style.top = pos + 'px'; 
-            }
-          }
-        }
-</script>
 
 </html>
