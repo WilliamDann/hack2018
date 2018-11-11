@@ -28,9 +28,9 @@ class NewsHTMLParser(HTMLParser):
         pass
         #print("Encountered some data  :", data)
 
-
-def parseArticle(url):
-    f = urllib.request.urlopen(url)
-    parser = NewsHTMLParser()
-    parser.feed(f.read().decode())
-    return parser.description
+class NewsParser:
+    def parseArticle(url):
+        f = urllib.request.urlopen(url)
+        parser = NewsHTMLParser()
+        parser.feed(f.read().decode())
+        return parser.description
