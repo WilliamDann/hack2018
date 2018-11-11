@@ -51,10 +51,11 @@ class NewsHTMLParser(HTMLParser):
 class NewsParser:
     def parseArticle(url):
         try:
-            f = urllib.request.urlopen(url)
+            req = urllib.request.Request(url, headers={ 'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36' })
+            f = urllib.request.urlopen(req)
             parser = NewsHTMLParser()
             parser.feed(f.read().decode())
             print(parser.description, parser.image_url, parser.title)
             return (parser.description, parser.image_url, parser.title)
         except:
-            return ('','')
+            return ('','','')
