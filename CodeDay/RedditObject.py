@@ -8,6 +8,11 @@ class RedditObject(MediaObject):
     def __init__(self, title, image, link, content=""):
         MediaObject.__init__(self, title, image, link, content)
     
+
+    # Determines if a post is 
+    def filterPost():
+
+
     # Get image posts from reddit 
     def getImagePost(subredditName, limit=1, source='hot'):
         posts = reddit.getPosts(subredditName, limit,)
@@ -28,7 +33,7 @@ class RedditObject(MediaObject):
         
         for post in posts:
             if not post.media:
-                returnData.append(MediaObject(post.title, post.media, post.shortlink))
+                returnData.append(MediaObject(post.title, post.media, post.shortlink, post.selftext))
         
         return returnData
 
