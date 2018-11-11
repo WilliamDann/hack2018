@@ -1,5 +1,3 @@
-
-
 # General media object
 class MediaObject:
     def __init__(self, title, image, link, content=""):
@@ -7,4 +5,3 @@ class MediaObject:
         self.image = image
         self.link = link
         self.content = content
-

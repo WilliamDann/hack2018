@@ -3,8 +3,6 @@ import reddit
 
 reddit.init()
 
-
-
 # Class for data from reddit
 class RedditObject(MediaObject):
     def __init__(self, title, image, link, content=""):
@@ -36,4 +34,12 @@ class RedditObject(MediaObject):
 
     # Get text posts from reddit 
     def getLinkPost(subredditName, limit=20, source='hot', maxAttempts=1):
-        raise NotImplementedError("Not implemented!")
+        posts = reddit.getPosts(subredditName, limit, source)
+
+        returnData = []
+        
+        for post in posts:
+            if post.url:
+                returnData.append(MediaObject(post.title, post.media, post.shortlink, post.url))
+        
+        return returnData
