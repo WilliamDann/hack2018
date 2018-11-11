@@ -4,11 +4,10 @@ import APIMedia as apMedia
 from random import randint
 from APIMedia import MediaSet
 import reddit
+import datetime
 
-from ZODB import FileStorage, DB
+from ZODB import FileStorage, DB, transaction
 
-
-from ZODB import FileStorage, DB
 
 app = Flask(__name__, static_url_path='/static')
 storage = FileStorage.FileStorage('ourDatabase.fs')
@@ -36,7 +35,7 @@ def getPosts():
     }"""
 
 
-    subredditsForImages = ['aww','funny','happy','cute','MadeMeSmile','GetMotivated','Aww']
+    subredditsForImages = ['aww','funny','happy','cute','MadeMeSmile','GetMotivated','Awww']
     subredditsForQuotes = ['inspirationalquotes', 'happy', 'GetMotivated']
     subredditsForNews = ['UpliftingNews', 'upliftingtrends','happy']
 
@@ -50,8 +49,10 @@ def getPosts():
 def populateDB(listofimages, listofquotes, listofnews):
     joinedList = listofimages + listofquotes + listofnews
     for element in joinedList:
-        #reddit = reddit.getPosts(element)
-        root[element] = {mediaObj: reddit.getPosts(element)}
+        redditAsListMedObj = reddit.getPostsAsMediaObjects(element)
+        root[element] = {mediaObj: redditAsListMedObj, timeUpdate: str(datetime.datetime.now())}
+    transaction.commit()
+
 
 
 
@@ -61,3 +62,4 @@ def populateDB(listofimages, listofquotes, listofnews):
 
 if __name__ == '__main__':
     app.run(debug=True)
+    connection.close()
