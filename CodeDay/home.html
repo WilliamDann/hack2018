@@ -3,15 +3,17 @@
 
 <head>
     <link rel="stylesheet" href="static/css/styles.css">
-    <link rel="stylesheet" href="static/css/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title>MakeMeHappy</title>
 </head>
 
 
 
+
+
 <body>
     <div class="w3-container w3-center ">
-        <button class="w3-button w3-xxxlarge w3-ripple" id="main-button">Make Me Happy</button>
+        <button class="w3-button w3-xxxlarge w3-ripple" id="main-button" onclick="myMove()">Make Me Happy</button>
     </div>
 
     <script src="static/js/index.js"></script>
@@ -19,5 +21,21 @@
 
 
 </body>
+
+<script>
+        function myMove() {
+          var elem = document.getElementById("main-button");   
+          var pos = 0;
+          var id = setInterval(frame, 20);
+          function frame() {
+            if (pos == 600) {
+              clearInterval(id);
+            } else {
+              pos++; 
+              elem.style.top = pos + 'px'; 
+            }
+          }
+        }
+</script>
 
 </html>
