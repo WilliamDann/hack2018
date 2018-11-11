@@ -4,7 +4,7 @@ body.night {
 }
 
 body:not(.night) .card {
-    background-color: #fff;
+    background-color: #fff !important;
 }
 
 .card {
@@ -50,7 +50,24 @@ body {
     }
 }
 
-#imagecard {
+#imagecard,
+#newscard {
     margin: 0.5rem auto 1rem auto;
+}
+
+#imagecard {
+    width: fit-content;
+}
+
+#newscard {
     width: 50%;
+}
+
+#mainbody {
+    transform: translateY(-86%);
+    transition: all .5s cubic-bezier(0, 0.56, 0.76, 1.19);
+}
+#image {
+    width: initial;
+    margin: 0 auto;
 }

@@ -16,57 +16,36 @@
 
 
 <body>
-    <div class="w3-container w3-center">
-
-        <div id="imagecard" class="card">
-            <div class="card-image">
-                <img class="materialboxed" id="image" width="600" height="400">
+    <div id="mainbody" class="w3-container w3-center">
+        <div id="content">
+            <div id="imagecard" class="card">
+                <div class="card-image">
+                    <img class="materialboxed" id="image" height="400">
+                </div>
+                <div class="card-content">
+                    <p id="image-title"></p>
+                </div>
             </div>
-            <div class="card-content">
-                <p id="image-title"></p>
+
+            <div class="w3-panel">
+                <p class="w3-xlarge w3-serif"><i id="quote"></i></p>
             </div>
-        </div>
-        <!--<img id="image" alt="" class="w3-round" width="600" height="400">-->
-
-
-        <div class="w3-panel w3-leftbar">
-            <p class="w3-xlarge w3-serif"><i id="quote"></i></p>
-        </div>
-
-        <!--<div class="w3-panel">
-            <button class="w3-button w3-xxxlarge w3-ripple" id="new-story-button"><a href="https://linkurl" title="Go to New Story">New
-                    Story</a></button>
-
-        </div>-->
-        <div class="card">
-            <div class="card-content">
-                <span class="card-title" id="news-title"></span>
-                <p id="news-desc"></p>
+            <div id="newscard" class="card horizontal">
+                <div class="card-image">
+                    <img id="news-image">
+                </div>
+                <div class="card-content">
+                    <span class="card-title" id="news-title"></span>
+                    <p id="news-desc"></p>
+                </div>
             </div>
         </div>
+
         <div class="w3-panel">
             <button class="w3-button w3-xxxlarge w3-ripple" id="main-button">Make Me Happy</button>
         </div>
 
-
-        <!--
-        <div class="row">
-                <div class="col s12 m7">
-                    <div class="card">
-                        <div class="card-image">
-                            <img class="materialboxed" src="https://picsum.photos/300/200/?random">
-                            <span class="card-title h-bg">Image Title</span>
-                        </div>
-                        <div class="card-action">
-                            <a href="https://linkurl" target="_blank"><i class="material-icons">open_in_new</i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        -->
-
     </div>
-    <!--Container div-->
 
     <script src="static/js/materialize.js"></script>
     <script src="static/js/index.js"></script>
