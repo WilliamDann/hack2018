@@ -35,8 +35,4 @@ def getPosts(subredditName, limit=20, source='hot'):
     elif (source == 'controversial'):
         data = subredditItem.controversial(limit=limit)
 
-    for post in data:
-        print(post.type)
-        returnData.append(media.MediaObject(post.title, post.media, post.shortlink))
-    
-    return returnData
+    return data
