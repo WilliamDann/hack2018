@@ -1,3 +1,4 @@
 stash/
 **.pyc
 /CodeDay/data/
+/CodeDay/__pycache__/
