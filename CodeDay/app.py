@@ -12,7 +12,7 @@ import transaction
 app = Flask(__name__, static_url_path='/static')
 
 
-subredditsForImages = ['aww','funny','happy','cute','MadeMeSmile','GetMotivated','Awww', 'cats', 'toofers', 'blep', 'blop', 'puppers', 'corgibutts']
+subredditsForImages = ['aww','happy','cute','MadeMeSmile','GetMotivated','Awww', 'cats', 'toofers', 'blep', 'blop', 'puppers', 'corgibutts']
 subredditsForQuotes = ['inspirationalquotes', 'GetMotivated']
 subredditsForNews = ['UpliftingNews', 'upliftingtrends']
 
