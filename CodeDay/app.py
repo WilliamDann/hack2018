@@ -1,6 +1,6 @@
-from media import media
+import media
 from flask import Flask, render_template, jsonify
-from media import APIMedia as apMedia
+import APIMedia as apMedia
 
 app = Flask(__name__, static_url_path='/static')
 

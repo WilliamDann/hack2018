@@ -1,4 +1,4 @@
-from RedditObject import RedditObject
+from RedditObject import RedditObject as ro
 
 class MediaSet:
     def __init__(self, quote, imageurl, imagetitle, newsurl, newstitle):
