@@ -4,22 +4,36 @@ from news import NewsParser
 increaseRate = 10
 
 class MediaSet:
-    def __init__(self, quote, imageurl, imagetitle, newsurl, newstitle, newsdesc):
+    def __init__(self, quote, quoteurl, imageurl, imagetitle, imageposturl, newsurl, newstitle, newsdesc, newsimg):
         self.quote = quote
+        self.quoteurl = quoteurl
+
         self.imageurl = imageurl
         self.imagetitle = imagetitle
+        self.imageposturl = imageposturl
+
         self.newsurl = newsurl
         self.newstitle = newstitle
         self.newsdesc = newsdesc
+        self.newsimg = newsimg
     
     def getJSONFormatted(self):
         return {
-            "quote":self.quote,
-            "imageurl":self.imageurl,
-            "imagetitle":self.imagetitle,
-            "newsurl":self.newsurl,
-            "newstitle":self.newstitle,
-            "newsdesc":self.newsdesc
+            "quote": {
+                "text": self.quote,
+                "url": self.quoteurl
+            },
+            "image": {
+                "image": self.imageurl,
+                "title": self.imagetitle,
+                "url": self.imageposturl
+            },
+            "news": {
+                "url": self.newsurl,
+                "title": self.newstitle,
+                "description": self.newsdesc,
+                "image": self.newsimg
+            }
         }
 
 def agregate(subredditimg, subredditquote, subredditnews):
@@ -45,9 +59,9 @@ def agregate(subredditimg, subredditquote, subredditnews):
         count+=increaseRate
         newsPost = ro.getLinkPost(subredditnews, count)
 
-    newsDesc = NewsParser.parseArticle(newsPost[0].content)
+    newsDesc, newsImage = NewsParser.parseArticle(newsPost[0].content)
 
-    return MediaSet(quotepost[0].title, 
-                    imgpost[0].image, imgpost[0].title, 
-                    newsPost[0].content, newsPost[0].title, newsDesc)
+    return MediaSet(quotepost[0].title, quotepost[0].url
+                    imgpost[0].image, imgpost[0].title,  imgpost[0].url
+                    newsPost[0].content, newsPost[0].title, newsDesc, newsImage)
 
