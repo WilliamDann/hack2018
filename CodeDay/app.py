@@ -9,12 +9,8 @@ import datetime
 from ZODB import FileStorage, DB
 import transaction
 
-
 app = Flask(__name__, static_url_path='/static')
-storage = FileStorage.FileStorage('data/ourDatabase.fs')
-db = DB(storage)
-connection = db.open()
-root = connection.root()
+
 
 subredditsForImages = ['aww','funny','happy','cute','MadeMeSmile','GetMotivated','Awww']
 subredditsForQuotes = ['inspirationalquotes', 'happy', 'GetMotivated']
@@ -55,9 +51,13 @@ def populateDB(listofimages, listofquotes, listofnews):
     transaction.commit()
     connection.close()
 
-populateDB(subredditsForImages, subredditsForQuotes, subredditsForNews)
-print(root.items())
-
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    db = DB("data/ourDatabase.fs")
+    connection = db.open()
+    root = connection.root()
+
+    # populateDB(subredditsForImages, subredditsForQuotes, subredditsForNews)
+    print(root.items())
+
+    app.run() # DO NOT ENABLE DEBUG
