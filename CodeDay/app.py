@@ -13,7 +13,7 @@ app = Flask(__name__, static_url_path='/static')
 
 
 subredditsForImages = ['aww','happy','cute','MadeMeSmile','GetMotivated','Awww', 'cats', 'toofers', 'blep', 'blop', 'puppers', 'corgibutts']
-subredditsForQuotes = ['inspirationalquotes', 'GetMotivated']
+subredditsForQuotes = ['GetMotivated']
 subredditsForNews = ['UpliftingNews', 'upliftingtrends']
 
 @app.route('/')
