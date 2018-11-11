@@ -1,5 +1,6 @@
 from RedditObject import RedditObject as ro
 from news import NewsParser
+from random import randint
 
 increaseRate = 10
 
@@ -61,11 +62,16 @@ def agregate(subredditimg, subredditquote, subredditnews):
         count+=increaseRate
         newsPost = ro.getLinkPost(subredditnews, count)
     
-    newsDesc, newsImage, newsTitle = None, None, newsPost[0].title
-    if len(newsPost) > 0:     
-        newsDesc, newsImage, newsTitle = NewsParser.parseArticle(newsPost[0].content)
+    randI, randQ, randN = (randint(0, len(imgpost) - 1),randint(0, len(quotepost) - 1),randint(0, len(newsPost) - 1))
 
-    return MediaSet(quotepost[0].title, quotepost[0].link,
-                    imgpost[0].image, imgpost[0].title,  imgpost[0].link,
-                    newsPost[0].content, newsTitle, newsDesc, newsImage, newsPost[0].link)
+    newsDesc, newsImage, newsTitle = None, None, None
+    if len(newsPost) > 0:
+        newsDesc, newsImage, newsTitle = NewsParser.parseArticle(newsPost[randN].content)
+
+    if newsTitle == '':
+        newsTitle = newsPost[randN].title
+
+    return MediaSet(quotepost[randQ].title, quotepost[randQ].link,
+                    imgpost[randI].image, imgpost[randI].title,  imgpost[randI].link,
+                    newsPost[randN].content, newsTitle, newsDesc, newsImage, newsPost[randN].link)
 
