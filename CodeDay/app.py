@@ -1,6 +1,7 @@
 import media
 from flask import Flask, render_template, jsonify
 import APIMedia as apMedia
+from APIMedia import MediaSet
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -22,7 +23,10 @@ def getPosts():
         "url": "https://news.com/happy"
     }
     }"""
-    return jsonify(apMedia.agregate('aww', 'motivationalquotes','Uplifting news'))#TODO Subreddit Selector
+
+    agregatedData = apMedia.agregate('aww', 'motivationalquotes','UpliftingNews')
+
+    return jsonify(agregatedData.getJSONFormatted())#TODO Subreddit Selector
 
 
 
