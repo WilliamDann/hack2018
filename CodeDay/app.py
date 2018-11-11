@@ -22,18 +22,6 @@ def index():
 
 @app.route('/posts', methods=['GET'])
 def getPosts():
-    #TODO Jsonify the 
-    """{
-        "quote": "Very inspirational quote here",
-        "image": {
-        "title": "Cute cat",
-        "url": "https://imgur.com/cat"
-    },
-        "news": {
-        "title": "Something happy happened",
-        "url": "https://news.com/happy"
-    }
-    }"""
 
     agregatedData = apMedia.agregate(subredditsForImages[randint(0, len(subredditsForImages) - 1)],
                                      subredditsForQuotes[randint(0, len(subredditsForQuotes) - 1)],
