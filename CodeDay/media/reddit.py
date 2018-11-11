@@ -1,6 +1,9 @@
 import praw
 import media
 
+def testFunc():
+    print("Hello World!")
+
 instance = None
 
 # Initilize a connection with reddit
