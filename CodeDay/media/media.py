@@ -16,7 +16,7 @@ class RedditObject(MediaObject):
     
     # Get image posts from reddit 
     def getImagePost(subredditName, limit=20, source='hot'):
-        posts = reddit.getPosts(subredditName, limit,)
+        posts = reddit.getPosts(subredditName, limit, source)
 
         returnData = []
         
@@ -40,4 +40,4 @@ class RedditObject(MediaObject):
 
     # Get text posts from reddit 
     def getLinkPost(subredditName, limit=20, source='hot', maxAttempts=1):
-        raise NotImplementedError("Not implemented!")
+        raise NotImplementedError("Not implemented")
