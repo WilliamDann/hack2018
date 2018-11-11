@@ -1,15 +1,20 @@
 const button = document.getElementById('main-button');
 const mainbody = document.getElementById('mainbody');
 
-const content = {
+var content = {
     quote: document.getElementById('quote'),
     image: document.getElementById('image'),
+    embed: document.getElementById('embed'),
     imageTitle: document.getElementById('image-title'),
     imageUrl: document.getElementById('image-url'),
     newsTitle: document.getElementById('news-title'),
     newsDesc: document.getElementById('news-desc'),
     newsUrl: [document.getElementById('news-url'), document.getElementById('news-url-2')],
     newsImage: document.getElementById('news-image'),
+    click: {
+        image: document.getElementById('hover-image-click'),
+        quote: document.getElementById('hover-quote-click')
+    }
 };
 
 button.addEventListener('click', () => {
@@ -27,13 +32,24 @@ button.addEventListener('click', () => {
         res.json().then((json) => {
             console.log(json);
             content.quote.innerHTML = json.quote.text;
+            content.click.quote.href = json.quote.reddit_url;
 
+            if (json.image.image.includes('imgur.com')) {
+                content.embed.src = json.image.image;
+                content.embed.style.display = 'block';
+                content.image.style.display = 'none';
+            } else {
+                content.image.src = json.image.image;
+                content.embed.style.display = 'none';
+                content.image.style.display = 'block';
+            }
             let r = /https:\/\/imgur.com\/(.+)/;
             if (r.test(json.image.image))
                 json.image.image = r.exec(json.image.image)[1];
             content.image.src = json.image.image;
             content.imageTitle.innerHTML = json.image.title;
-
+            content.click.image.href = json.image.reddit_url;
+            
             content.newsTitle.innerText = json.news.title;
             content.newsUrl[0].href = json.news.url;
             content.newsUrl[1].href = json.news.url;
