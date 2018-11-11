@@ -58,10 +58,12 @@ def agregate(subredditimg, subredditquote, subredditnews):
         print("NewPostCountcls |", count)
         count+=increaseRate
         newsPost = ro.getLinkPost(subredditnews, count)
+    
+    newsDesc, newsImage = None, None
+    if len(newsPost) > 0:     
+        newsDesc, newsImage = NewsParser.parseArticle(newsPost[0].content)
 
-    newsDesc, newsImage = NewsParser.parseArticle(newsPost[0].content)
-
-    return MediaSet(quotepost[0].title, quotepost[0].url,
-                    imgpost[0].image, imgpost[0].title,  imgpost[0].url,
+    return MediaSet(quotepost[0].title, quotepost[0].link,
+                    imgpost[0].image, imgpost[0].title,  imgpost[0].link,
                     newsPost[0].content, newsPost[0].title, newsDesc, newsImage)
 
