@@ -8,6 +8,8 @@ import reddit
 from ZODB import FileStorage, DB
 
 
+from ZODB import FileStorage, DB
+
 app = Flask(__name__, static_url_path='/static')
 storage = FileStorage.FileStorage('ourDatabase.fs')
 db = DB(storage)

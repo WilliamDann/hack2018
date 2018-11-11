@@ -8,6 +8,15 @@ class RedditObject(MediaObject):
     def __init__(self, title, image, link, content=""):
         MediaObject.__init__(self, title, image, link, content)
     
+
+    # Determines if a post is 
+    def filterPost(postData, allowStickied=False):
+        # Disallow stickied posts
+        if postData.stickied and not allowStickied:
+            return False
+        
+        return True
+
     # Get image posts from reddit 
     def getImagePost(subredditName, limit=1, source='hot'):
         posts = reddit.getPosts(subredditName, limit,)
@@ -15,7 +24,7 @@ class RedditObject(MediaObject):
         returnData = []
         
         for post in posts:
-            if post.media:
+            if post.media and RedditObject.filterPost(post):
                 returnData.append(MediaObject(post.title, post.media, post.shortlink))
         
         return returnData
@@ -27,8 +36,8 @@ class RedditObject(MediaObject):
         returnData = []
         
         for post in posts:
-            if not post.media:
-                returnData.append(MediaObject(post.title, post.media, post.shortlink))
+            if not post.media and RedditObject.filterPost(post):
+                returnData.append(MediaObject(post.title, post.media, post.shortlink, post.selftext))
         
         return returnData
 
@@ -39,7 +48,7 @@ class RedditObject(MediaObject):
         returnData = []
         
         for post in posts:
-            if post.url:
+            if post.url and RedditObject.filterPost(post):
                 returnData.append(MediaObject(post.title, post.media, post.shortlink, post.url))
         
         return returnData
