@@ -24,13 +24,19 @@ def getPosts(subredditName, limit=20, source='hot'):
     data = None
     returnData = []
 
-    # TODO add all data sources
     if (source == 'hot'):
         data = subredditItem.hot(limit=limit)
     elif (source == 'top'):
         data = subredditItem.top(limit=limit)
+    elif (source == 'rising'):
+        data = subredditItem.rising(limit=limit)
+    elif (source == 'new'):
+        data = subredditItem.new(limit=limit)
+    elif (source == 'controversial'):
+        data = subredditItem.controversial(limit=limit)
 
     for post in data:
+        print(post.type)
         returnData.append(media.MediaObject(post.title, post.media, post.shortlink))
     
     return returnData
