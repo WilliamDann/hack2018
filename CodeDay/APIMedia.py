@@ -61,7 +61,7 @@ def agregate(subredditimg, subredditquote, subredditnews):
 
     newsDesc, newsImage = NewsParser.parseArticle(newsPost[0].content)
 
-    return MediaSet(quotepost[0].title, quotepost[0].url
-                    imgpost[0].image, imgpost[0].title,  imgpost[0].url
+    return MediaSet(quotepost[0].title, quotepost[0].url,
+                    imgpost[0].image, imgpost[0].title,  imgpost[0].url,
                     newsPost[0].content, newsPost[0].title, newsDesc, newsImage)
 
