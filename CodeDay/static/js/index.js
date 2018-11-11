@@ -17,7 +17,13 @@ var content = {
     }
 };
 
+var night = false;
+
+var happyWords = ['Fabricating', 'Generating', 'Looking for', 'Searching for', 'Finding', 'Collecting', 'Aggregating'];
+
 button.addEventListener('click', () => {
+    document.getElementById('newscard').style.opacity = '0';
+    button.innerHTML = happyWords[Math.floor(Math.random() * happyWords.length)] + ' Happiness';
     window.scrollTo(0, 0);
     button.classList.add('focused');
     mainbody.style.transform = 'translateY(-86%)';
@@ -58,6 +64,7 @@ button.addEventListener('click', () => {
             content.newsImage.src = json.news.image;
             button.classList.remove('focused');
             button.innerHTML = 'Make More Happy';
+            document.getElementById('newscard').style.opacity = '1';
             mainbody.style.transform = 'translateY(0)';
         });
     }).catch(e => {
@@ -66,7 +73,7 @@ button.addEventListener('click', () => {
 });
 let updateNight = () => {
     let t = new Date();
-    if (t.getHours() > 19 || t.getHours() < 5) {
+    if (t.getHours() > 19 || t.getHours() < 5 || night) {
         if (document.body.className !== 'night')
             document.body.className = 'night';
     } else {
@@ -81,4 +88,9 @@ setInterval(updateNight, 5000);
 document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('.materialboxed');
     var instances = M.Materialbox.init(elems, {});
+});
+
+document.getElementById('night-theme-button').addEventListener('click' , () => {
+    night = !night;
+    updateNight();
 });
