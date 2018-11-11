@@ -11,13 +11,13 @@ class MediaSet:
         self.newstitle = newstitle
     
     def getJSONFormatted(self):
-        return [
-            {"quote":self.quote},
-            {"imageurl":self.imageurl},
-            {"imagetitle":self.imagetitle},
-            {"newsurl":self.newsurl},
-            {"newstitle":self.newstitle}
-        ]
+        return {
+            "quote":self.quote,
+            "imageurl":self.imageurl,
+            "imagetitle":self.imagetitle,
+            "newsurl":self.newsurl,
+            "newstitle":self.newstitle
+        }
 
 def agregate(subredditimg, subredditquote, subredditnews):
     count = 10
