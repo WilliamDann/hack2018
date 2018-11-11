@@ -9,7 +9,7 @@ class RedditObject(MediaObject):
         MediaObject.__init__(self, title, image, link, content)
     
     # Get image posts from reddit 
-    def getImagePost(subredditName, limit=20, source='hot'):
+    def getImagePost(subredditName, limit=1, source='hot'):
         posts = reddit.getPosts(subredditName, limit,)
 
         returnData = []
@@ -21,7 +21,7 @@ class RedditObject(MediaObject):
         return returnData
     
     # Get text posts from reddit 
-    def getTextPost(subredditName, limit=20, source='hot', maxAttempts=1):
+    def getTextPost(subredditName, limit=1, source='hot', maxAttempts=1):
         posts = reddit.getPosts(subredditName, limit, source)
 
         returnData = []
@@ -33,7 +33,7 @@ class RedditObject(MediaObject):
         return returnData
 
     # Get text posts from reddit 
-    def getLinkPost(subredditName, limit=20, source='hot', maxAttempts=1):
+    def getLinkPost(subredditName, limit=1, source='hot', maxAttempts=1):
         posts = reddit.getPosts(subredditName, limit, source)
 
         returnData = []
