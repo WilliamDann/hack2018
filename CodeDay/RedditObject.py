@@ -10,9 +10,12 @@ class RedditObject(MediaObject):
     
 
     # Determines if a post is 
-    def filterPost(postData, allowStickied=False):
+    def filterPost(postData, allowVideo=False, allowStickied=False):
         # Disallow stickied posts
         if postData.stickied and not allowStickied:
+            return False
+
+        if postData.is_video and not allowVideo:
             return False
         
         return True
