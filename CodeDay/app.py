@@ -13,8 +13,8 @@ app = Flask(__name__, static_url_path='/static')
 
 
 subredditsForImages = ['aww','funny','happy','cute','MadeMeSmile','GetMotivated','Awww']
-subredditsForQuotes = ['inspirationalquotes', 'happy', 'GetMotivated']
-subredditsForNews = ['UpliftingNews', 'upliftingtrends','happy']
+subredditsForQuotes = ['inspirationalquotes', 'GetMotivated']
+subredditsForNews = ['UpliftingNews', 'upliftingtrends']
 
 @app.route('/')
 def index():
@@ -50,6 +50,10 @@ def populateDB(listofimages, listofquotes, listofnews):
         root[element] = {"mediaObj": redditAsListMedObj, "timeUpdate": str(datetime.datetime.now())}
     transaction.commit()
     connection.close()
+
+def updateDB(subredditName):
+    newListOfMedObj = reddit.getPostsAsMediaObjects(subredditName)
+    root[subredditName] = {"mediaObj": newListOfMedObj, "timeUpdate": str(datetime.datetime.now())}
 
 
 if __name__ == '__main__':
