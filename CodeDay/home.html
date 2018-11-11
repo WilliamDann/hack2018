@@ -4,6 +4,7 @@
 <head>
     <link rel="stylesheet" href="static/css/styles.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="static/css/materialize.css">
     <title>MakeMeHappy</title>
 </head>
 
@@ -12,10 +13,25 @@
 
 
 <body>
-    <div class="w3-container w3-center ">
-        <button class="w3-button w3-xxxlarge w3-ripple" id="main-button" onclick="myMove()">Make Me Happy</button>
+    <div class="w3-container w3-center">
+
+        <div class="row">
+            <div class="col s12 m7">
+                <div class="card">
+                    <div class="card-image">
+                        <img class="materialboxed" src="https://picsum.photos/300/200/?random">
+                        <span class="card-title h-bg">Image Title</span>
+                    </div>
+                    <div class="card-action">
+                        <a href="https://linkurl" target="_blank"><i class="material-icons">open_in_new</i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="w3-button w3-xxxlarge w3-ripple" id="main-button">Make Me Happy</button>
     </div>
 
+    <script src="static/js/materialize.js"></script>
     <script src="static/js/index.js"></script>
 
 </body>

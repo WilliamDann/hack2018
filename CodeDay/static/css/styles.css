@@ -42,7 +42,7 @@ button.focused {
     box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.65);
     transition: all 0.5s;
     margin-top: 10%;
-    position: absolute;
+    position: relative;
     top:0;
 }
 
