@@ -57,6 +57,7 @@ body {
 
 #imagecard {
     width: fit-content;
+    max-width: 75%;
 }
 
 #newscard {
@@ -67,7 +68,14 @@ body {
     transform: translateY(-86%);
     transition: all .5s cubic-bezier(0, 0.56, 0.76, 1.19);
 }
+
 #image {
     width: initial;
     margin: 0 auto;
+}
+
+#quotepanel {
+    max-width: 33%;
+    margin-left: auto;
+    margin-right: auto;
 }

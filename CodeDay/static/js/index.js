@@ -8,7 +8,7 @@ const content = {
     imageUrl: document.getElementById('image-url'),
     newsTitle: document.getElementById('news-title'),
     newsDesc: document.getElementById('news-desc'),
-    newsUrl: document.getElementById('news-url'),
+    newsUrl: [document.getElementById('news-url'), document.getElementById('news-url-2')],
     newsImage: document.getElementById('news-image'),
 };
 
@@ -22,7 +22,6 @@ button.addEventListener('click', () => {
         content.imageTitle.innerHTML = '';
     }, 400);
     setTimeout(() => {
-        button.innerHTML = 'Make More Happy';
     }, 250);
     fetch('/posts').then((res) => {
         res.json().then((json) => {
@@ -34,11 +33,14 @@ button.addEventListener('click', () => {
                 json.image.image = r.exec(json.image.image)[1];
             content.image.src = json.image.image;
             content.imageTitle.innerHTML = json.image.title;
-            
+
             content.newsTitle.innerText = json.news.title;
+            content.newsUrl[0].href = json.news.url;
+            content.newsUrl[1].href = json.news.url;
             content.newsDesc.innerText = json.news.description;
             content.newsImage.src = json.news.image;
             button.classList.remove('focused');
+            button.innerHTML = 'Make More Happy';
             mainbody.style.transform = 'translateY(0)';
         });
     }).catch(e => {
@@ -59,7 +61,7 @@ updateNight();
 
 setInterval(updateNight, 5000);
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('.materialboxed');
     var instances = M.Materialbox.init(elems, {});
-  });
+});
