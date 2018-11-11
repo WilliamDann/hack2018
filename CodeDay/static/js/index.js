@@ -18,6 +18,7 @@ var content = {
 };
 
 button.addEventListener('click', () => {
+    window.scrollTo(0, 0);
     button.classList.add('focused');
     mainbody.style.transform = 'translateY(-86%)';
     setTimeout(() => {
