@@ -40,7 +40,10 @@ class NewsHTMLParser(HTMLParser):
 
 class NewsParser:
     def parseArticle(url):
-        f = urllib.request.urlopen(url)
-        parser = NewsHTMLParser()
-        parser.feed(f.read().decode())
-        return (parser.description, parser.image_url)
+        try:
+            f = urllib.request.urlopen(url)
+            parser = NewsHTMLParser()
+            parser.feed(f.read().decode())
+            return (parser.description, parser.image_url)
+        except:
+            return ('','')
