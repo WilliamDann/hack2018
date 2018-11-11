@@ -36,7 +36,7 @@ def getPosts():
     }"""
 
     agregatedData = apMedia.agregate(subredditsForImages[randint(0, len(subredditsForImages) - 1)],
-                                    subredditsForQuotes[randint(0, len(subredditsForQuotes) - 1)],
+                                     subredditsForQuotes[randint(0, len(subredditsForQuotes) - 1)],
                                      subredditsForNews[randint(0, len(subredditsForNews) - 1)])
 
     return jsonify(agregatedData.getJSONFormatted())#TODO Subreddit Selector
