@@ -1,0 +1,40 @@
+button {
+    margin: auto;
+    display: block;
+    top: 50%;
+    position: relative;
+    transform: translateY(100px);
+    border: none;
+    border-radius: 3px;
+    color: white;
+    background-color: #1e3799;
+    padding: 10px 20px 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.65);
+    transition: all 0.5s ease-out;
+}
+
+button:hover {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.85), 0 0 5px 100px rgba(0, 0, 0, 0.1);
+    transform: translateY(97px);
+}
+
+button:focus {
+    outline: none;
+}
+
+button.focused {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.85), 0 0 0 100px rgba(0, 0, 0, 0), 0 0 0 1500px rgba(0, 0, 0, 0.2);
+    transform: translateY(100px);
+    bottom: 0;
+}
+button.error {
+    box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.85), 0 0 0 100px rgba(0, 0, 0, 0), 0 0 0 1500px rgba(0, 0, 0, 0.2);
+    transform: translateY(500px) rotate(90deg);
+}
+
+.h-bg {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-top-right-radius: 40px;
+}
