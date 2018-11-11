@@ -1,14 +1,16 @@
 from RedditObject import RedditObject as ro
+from news import NewsParser
 
 increaseRate = 10
 
 class MediaSet:
-    def __init__(self, quote, imageurl, imagetitle, newsurl, newstitle):
+    def __init__(self, quote, imageurl, imagetitle, newsurl, newstitle, newsdesc):
         self.quote = quote
         self.imageurl = imageurl
         self.imagetitle = imagetitle
         self.newsurl = newsurl
         self.newstitle = newstitle
+        self.newsdesc = newsdesc
     
     def getJSONFormatted(self):
         return {
@@ -16,7 +18,8 @@ class MediaSet:
             "imageurl":self.imageurl,
             "imagetitle":self.imagetitle,
             "newsurl":self.newsurl,
-            "newstitle":self.newstitle
+            "newstitle":self.newstitle,
+            "newsdesc":self.newsdesc
         }
 
 def agregate(subredditimg, subredditquote, subredditnews):
@@ -42,7 +45,9 @@ def agregate(subredditimg, subredditquote, subredditnews):
         count+=increaseRate
         newsPost = ro.getLinkPost(subredditnews, count)
 
+    newsDesc = NewsParser.parseArticle(newsPost[0].content)
+
     return MediaSet(quotepost[0].title, 
                     imgpost[0].image, imgpost[0].title, 
-                    newsPost[0].content, newsPost[0].title)
+                    newsPost[0].content, newsPost[0].title, newsDesc)
 

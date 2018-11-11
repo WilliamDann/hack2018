@@ -2,6 +2,15 @@ body.night {
     background-color: #23272A;
     color: white;
 }
+
+body:not(.night) .card {
+    background-color: #fff;
+}
+
+.card {
+    background-color: #23272A !important;
+}
+
 body {
     transition: all 0.5s;
 }
@@ -39,4 +48,14 @@ body {
     100% {
         color: black;
     }
+}
+
+#imagecard {
+    margin: 0.5rem auto 1rem auto;
+    width: 50%;
+}
+
+.card-title {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-top-right-radius: 20px;
 }
